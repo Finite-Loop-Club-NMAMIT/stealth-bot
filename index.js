@@ -23,7 +23,6 @@ client.once(Events.ClientReady, () => {
     console.log('Bot turned on');
 });
 
-
 client.on(Events.MessageCreate, async (message) => {
     if (message.author.bot) return;
 
@@ -39,7 +38,7 @@ client.on(Events.MessageCreate, async (message) => {
 
     if (channel.id !== anonymousChannel) return;
     if (message.member.roles.cache.some((role) => role.name === roleName)) return; // admin can't send anonymous messages
-    channelMessage(message, messageStamp);
+    await channelMessage(message, messageStamp);
 })
 
 function dmMessage(message, messageStamp) {
@@ -60,19 +59,38 @@ function dmMessage(message, messageStamp) {
     return;
 }
 
-function channelMessage(message, messageStamp) {
+async function channelMessage(message) {
+    const originalMessageId = message.reference?.messageId;
+    const replyAuthorUsername = message.author.username;
+    let replyInfo = '';
+    let originalMessage;
+
+    if (originalMessageId) {
+        try {
+            originalMessage = await channel.messages.fetch(originalMessageId);
+            const originalAuthorUsername = originalMessage.author.username;
+            replyInfo = `\n\nReply to: @${originalAuthorUsername} (Message ID: ${originalMessageId})`;
+            originalMessage.reply({
+                content: "```\n" + getAvatar(replyAuthorUsername) + "\n " + str + "```\t" + message.content + replyInfo,
+                files: message.attachments.map((a) => a.url),
+            })
+        } catch (error) {
+            console.error('Error fetching original message:', error);
+        }
+    }
+
     channel.send({
-        content: "```\n" + getAvatar(message.author.username) + "\n " + str + "```\t" + message.content + "\n",
-        files: message.attachments.map(a => a.url)
+        content: "```\n" + getAvatar(replyAuthorUsername) + "\n " + str + "```\t" + message.content + replyInfo,
+        files: message.attachments.map((a) => a.url),
     });
 
     client.channels.fetch(modChannel).then((channel) => {
         channel.send({
-            content: "```\n" + message.author.username + "\n " + str + "```\t" + message.content + "\n",
-            files: message.attachments.map(a => a.url)
+            content: "```\n" + replyAuthorUsername + "\n " + str + "```\t" + message.content + replyInfo,
+            files: message.attachments.map((a) => a.url),
         });
+    });
 
-    })
     message.delete();
 }
 
