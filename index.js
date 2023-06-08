@@ -76,13 +76,12 @@ async function channelMessage(message) {
             })
         } catch (error) {
             console.error('Error fetching original message:', error);
+            channel.send({
+                content: "```\n" + getAvatar(replyAuthorUsername) + "\n " + str + "```\t" + message.content + replyInfo,
+                files: message.attachments.map((a) => a.url),
+            });
         }
     }
-
-    channel.send({
-        content: "```\n" + getAvatar(replyAuthorUsername) + "\n " + str + "```\t" + message.content + replyInfo,
-        files: message.attachments.map((a) => a.url),
-    });
 
     client.channels.fetch(modChannel).then((channel) => {
         channel.send({

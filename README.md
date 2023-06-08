@@ -1,6 +1,6 @@
 # Stealth Bot
 
-<img src="https://github.com/FiniteLoop-NMAMIT/stealth-bot/assets/83623339/f68bf189-b25b-48db-944e-a955fc26cdfb" width="80"/>
+<img src="https://github.com/FiniteLoop-NMAMIT/stealth-bot/assets/83623339/67146007-290a-4b9a-8404-1f34ff5f95ee" width="80"/>
 
 An anonymous chatting bot for Discord.
 
