@@ -9,7 +9,7 @@ const anonymousChannel = process.env.ANONUMOUS_CHANNEL;
 const roleName = process.env.ROLE_NAME;
 const modChannel = process.env.MOD_CHANNEL;
 const token = process.env.DISCORD_TOKEN;
-if(!anonymousChannel || !token) {
+if (!anonymousChannel || !token) {
     console.log("Please set all required environment variables");
     process.exit(1);
 }
@@ -25,38 +25,42 @@ client.once(Events.ClientReady, () => {
 
 
 client.on(Events.MessageCreate, async (message) => {
-    if(message.author.bot) return;
-    const messageStamp = Math.floor(Math.random() * 100000);
-    const channel=message.channel;
-    if(channel.type===1){
-        dmMessage(message,messageStamp);
+    if (message.author.bot) return;
+
+    const channel = message.channel;
+    const r = Math.floor(Math.random() * 100000);
+    const d = new Date();
+    const messageStamp = "#" + r + " " + d.toLocaleDateString();
+
+    if (channel.type === 1) { //dm
+        dmMessage(message, messageStamp);
         return
     }
-    
-    if(channel.id!==anonymousChannel) return; 
+
+    if (channel.id !== anonymousChannel) return;
     if (message.member.roles.cache.some((role) => role.name === roleName)) return; // admin can't send anonymous messages
-    channelMessage(message,messageStamp);
+    channelMessage(message, messageStamp);
 })
 
-function dmMessage(message,messageStamp){
+function dmMessage(message, messageStamp) {
     client.channels.fetch(anonymousChannel).then((channel) => {
         channel.send({
-          content: "```\n" + getAvatar(message.author.username) + "\n " + str + "```\t" + message.content + "\n",
-          files: message.attachments.map(a => a.url)
-        });
-  
-        client.channels.fetch(modChannel).then((channel) => {
-          channel.send({
-            content: "```\n" + message.author.username + "\n " + str + "```\t" + message.content + "\n",
+            content: "```\n" + getAvatar(message.author.username) + "\n " + messageStamp + "```\t" + message.content + "\n",
             files: message.attachments.map(a => a.url)
-          });
-  
+        });
+
+        client.channels.fetch(modChannel).then((channel) => {
+            channel.send({
+                content: "```\n" + message.author.username + "\n " + messageStamp + "```\t" + message.content + "\n",
+                files: message.attachments.map(a => a.url)
+            });
+
         })
-      })
+    })
     return;
 }
 
-function channelMessage(message,messageStamp){
+function channelMessage(message, messageStamp) {
     channel.send({
         content: "```\n" + getAvatar(message.author.username) + "\n " + str + "```\t" + message.content + "\n",
         files: message.attachments.map(a => a.url)
