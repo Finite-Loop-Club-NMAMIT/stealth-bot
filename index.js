@@ -44,7 +44,7 @@ client.on(Events.MessageCreate, async (message) => {
 function dmMessage(message, messageStamp) {
     client.channels.fetch(anonymousChannel).then((channel) => {
         channel.send({
-            content: "```\n" + getAvatar(message.author.username) + "\n " + messageStamp + "```\t" + message.content + "\n\n--------------------",
+            content: "```\n" + getAvatar(message.author.username) + "\n " + messageStamp + "```\n" + message.content + "\n\n--------------------",
             files: message.attachments.map(a => a.url)
         });
     })
