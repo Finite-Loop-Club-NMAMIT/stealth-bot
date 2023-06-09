@@ -8,6 +8,9 @@
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
+  "engines": {
+    "node": ">=16.9"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/FiniteLoop-NMAMIT/stealth-bot.git"
