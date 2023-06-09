@@ -33,13 +33,13 @@ client.on(Events.MessageCreate, async (message) => {
 
     if (channel.type === 1) { //dm
         dmMessage(message, messageStamp);
-        return
+        return;
     }
 
     if (channel.id !== anonymousChannel) return;
     if (message.member.roles.cache.some((role) => role.name === roleName)) return; // admin can't send anonymous messages
-    await channelMessage(message, messageStamp);
-})
+    await channelMessage(channel, message, messageStamp);
+});
 
 function dmMessage(message, messageStamp) {
     client.channels.fetch(anonymousChannel).then((channel) => {
@@ -59,7 +59,8 @@ function dmMessage(message, messageStamp) {
     return;
 }
 
-async function channelMessage(message, messageStamp) {
+
+async function channelMessage(channel, message, messageStamp) {
     const originalMessageId = message.reference?.messageId;
     const replyAuthorUsername = message.author.username;
     let replyInfo = '';
@@ -73,7 +74,7 @@ async function channelMessage(message, messageStamp) {
             originalMessage.reply({
                 content: "```\n" + getAvatar(replyAuthorUsername) + "\n " + messageStamp + "```\t" + message.content + replyInfo,
                 files: message.attachments.map((a) => a.url),
-            })
+            });
         } catch (error) {
             console.error('Error fetching original message:', error);
             channel.send({
@@ -83,8 +84,15 @@ async function channelMessage(message, messageStamp) {
         }
     }
 
-    client.channels.fetch(modChannel).then((channel) => {
-        channel.send({
+    client.channels.fetch(modChannel).then((modChannel) => {
+        modChannel.send({
+            content: "```\n" + replyAuthorUsername + "\n " + messageStamp + "```\t" + message.content + replyInfo,
+            files: message.attachments.map((a) => a.url),
+        });
+    });
+
+    client.channels.fetch(anonymousChannel).then((anonymousChannel) => {
+        anonymousChannel.send({
             content: "```\n" + replyAuthorUsername + "\n " + messageStamp + "```\t" + message.content + replyInfo,
             files: message.attachments.map((a) => a.url),
         });
