@@ -77,10 +77,7 @@ async function channelMessage(channel, message, messageStamp) {
             });
         } catch (error) {
             console.error('Error fetching original message:', error);
-            channel.send({
-                content: "```\n" + getAvatar(replyAuthorUsername) + "\n " + messageStamp + "```\t" + message.content + replyInfo,
-                files: message.attachments.map((a) => a.url),
-            });
+            replyInfo = '';
         }
     }
 
@@ -93,7 +90,7 @@ async function channelMessage(channel, message, messageStamp) {
 
     client.channels.fetch(anonymousChannel).then((anonymousChannel) => {
         anonymousChannel.send({
-            content: "```\n" + replyAuthorUsername + "\n " + messageStamp + "```\t" + message.content + replyInfo,
+            content: "```\n" + getAvatar(replyAuthorUsername) + "\n " + messageStamp + "```\t" + message.content,
             files: message.attachments.map((a) => a.url),
         });
     });
