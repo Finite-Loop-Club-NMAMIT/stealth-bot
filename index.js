@@ -37,24 +37,24 @@ client.on(Events.MessageCreate, async (message) => {
     }
 
     if (channel.id !== anonymousChannel) return;
-    if (message.member.roles.cache.some((role) => role.name === roleName)) return; // admin can't send anonymous messages
+    if (roleName && message.member.roles.cache.some((role) => role.name === roleName)) return; // admin can't send anonymous messages
     await channelMessage(channel, message, messageStamp);
 });
 
 function dmMessage(message, messageStamp) {
     client.channels.fetch(anonymousChannel).then((channel) => {
         channel.send({
-            content: "```\n" + getAvatar(message.author.username) + "\n " + messageStamp + "```\t" + message.content + "\n",
+            content: "```\n" + getAvatar(message.author.username) + "\n " + messageStamp + "```\t" + message.content + "--------------------\n\n",
+            files: message.attachments.map(a => a.url)
+        });
+    })
+    if(!modChannel) return;
+    client.channels.fetch(modChannel).then((channel) => {
+        channel.send({
+            content: "```\n" + message.author.username + "\n " + messageStamp + "```\n" + message.content + "--------------------\n\n",
             files: message.attachments.map(a => a.url)
         });
 
-        client.channels.fetch(modChannel).then((channel) => {
-            channel.send({
-                content: "```\n" + message.author.username + "\n " + messageStamp + "```\t" + message.content + "\n",
-                files: message.attachments.map(a => a.url)
-            });
-
-        })
     })
     return;
 }
@@ -79,7 +79,7 @@ async function channelMessage(channel, message, messageStamp) {
             console.error('Error fetching original message:', error);
             client.channels.fetch(anonymousChannel).then((anonymousChannel) => {
                 anonymousChannel.send({
-                    content: "```\n" + getAvatar(replyAuthorUsername) + "\n " + messageStamp + "```\t" + message.content,
+                    content: "```\n" + getAvatar(replyAuthorUsername) + "\n " + messageStamp + "```\n" + message.content+"--------------------\n\n",
                     files: message.attachments.map((a) => a.url),
                 });
             });
@@ -87,20 +87,25 @@ async function channelMessage(channel, message, messageStamp) {
     } else {
         client.channels.fetch(anonymousChannel).then((anonymousChannel) => {
             anonymousChannel.send({
-                content: "```\n" + getAvatar(replyAuthorUsername) + "\n " + messageStamp + "```\t" + message.content,
+                content: "```\n" + getAvatar(replyAuthorUsername) + "\n " + messageStamp + "```\n" + message.content+"--------------------\n\n",
                 files: message.attachments.map((a) => a.url),
             });
         });
     }
-
+    if(!modChannel) return;
     client.channels.fetch(modChannel).then((modChannel) => {
         modChannel.send({
-            content: "```\n" + replyAuthorUsername + "\n " + messageStamp + "```\t" + message.content + replyInfo,
+            content: "```\n" + replyAuthorUsername + "\n " + messageStamp + "```\n" + message.content + replyInfo+"--------------------\n\n",
             files: message.attachments.map((a) => a.url),
         });
     });
 
-    message.delete();
+    try{
+        message.delete();
+    }catch(error){
+        console.error('Error deleting message:', error.message);
+    }
+
 }
 
 client.login(token)
