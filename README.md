@@ -22,6 +22,35 @@ An anonymous chatting bot for Discord.
 >**Note:** 
 > The bot will ignore the messages sent by users with the role specified in environment variable `ROLE_NAME` and will forward the messages to a channel which has the name specified in environment variable `MOD_CHANNEL` along with the original message's author's name.
 
+## Development Environment Setup
+### Clone the repo 
+```
+git clone https://github.com/FiniteLoop-NMAMIT/stealth-bot.git
+```
+### Install Dependencies
+```
+npm i
+```
+
+### Setup enviornment variable
+- Set up a application from the [discord developer portal](https://discord.com/developers/docs/game-sdk/applications)
+- Refer [this](https://discordjs.guide/preparations/setting-up-a-bot-application.html)
+- Setup the configurations of the bot and get the token put it in the env
+
+![image](https://github.com/FiniteLoop-NMAMIT/stealth-bot/assets/91735807/035d9161-9de9-4c03-9085-e76bb04911eb)
+
+- Get the generated from the below URL and use to register the bot to your server
+
+![image](https://github.com/FiniteLoop-NMAMIT/stealth-bot/assets/91735807/1c734f9c-1c3f-471d-9dbe-a6789966152e)
+
+- Get the channel id of the anonymous channel and optionally log/mod channel id. Refer this [](https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-) to get channel id
+- Optionally you can add role name whose messages won't be anonymous
+
+### Run the app
+```
+npm run dev
+```
+
 ## License
 [Apache License 2.0](https://choosealicense.com/licenses/apache-2.0/)
 
