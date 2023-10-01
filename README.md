@@ -43,7 +43,7 @@ npm i
 
 ![image](https://github.com/FiniteLoop-NMAMIT/stealth-bot/assets/91735807/1c734f9c-1c3f-471d-9dbe-a6789966152e)
 
-- Get the channel id of the anonymous channel and optionally log/mod channel id. Refer this [](https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-) to get channel id
+- Get the channel id of the anonymous channel and optionally log/mod channel id. Refer [this](https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-) to get channel id
 - Optionally you can add role name whose messages won't be anonymous
 
 ### Run the app
