@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <title>Stealth Bot</title>
+</head>
+
+<body>
+    <div id="nav" class="nav">
+        <div class="logo">
+            <img src="/assets/Screenshot_2023-10-01_145313-removebg.png" alt="logo" class="navLogo">
+            <h2>stealth-bot</h2>
+        </div>
+    </div>
+    <div class="body">
+        <div class="section1">
+            <div class="mainHeading">
+                <img src="/assets/botIconInverted2.png" alt="bot icon">
+                <div>
+                    <img src="/assets/Screenshot_2023-10-01_145313-removebg.png" alt="logo" class="logo">
+                    <h1>Stealth Bot</h1>
+                </div>
+                <div class="mainHeadingBtn">
+                    <a href=""><div class="addBtn"><h3>Add to server</h3></div></a>
+                    <a href="#howTo"><div class="howToBtn"><h3>How to use</h3></div></a>
+                    
+                </div>
+            </div>
+            <div data-aos="fade-right" class="features" >
+                <h1>Features</h1>
+                <ul>
+                    <li><i class="fa-solid fa-robot fa-lg"></i>Complete Anonymity: Chat anonymously on Discord without revealing your identity.
+                    <li><i class="fa-solid fa-user-ninja fa-bounce fa-xl"></i>Anonymous Message Forwarding: Send messages to the bot or the channel on server, and it will
+                        repost them anonymously to a designated channel.
+                    </li>
+                    <li><i class="fa-solid fa-user-secret fa-lg"></i>Moderator Visibility: Forwarded messages are displayed in a separate channel, allowing
+                        moderators to see the original sender.</li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section2">
+
+            <div data-aos="fade-right" class="howTo" id="howTo">
+                <h1>How to use</h1>
+                <ul>
+                    <li><i class="fa-solid fa-robot fa-lg"></i>Deploy the bot and invite it to your server</li>
+                    <li><i class="fa-solid fa-user-ninja fa-bounce fa-xl"></i>Create 2 channels, one for the users to send messages and one for the bot to forward the
+                        messages to Users with specific role</li>
+                    <li><i class="fa-solid fa-user-secret fa-lg"></i>The users can be anonymous either by sending the messages to the channel you created or by
+                        directly messaging the bot
+                        <ul>
+                            <li>In first case, as soon as user sends a message the bot will delete it and resend it
+                                anonymously. But the notification will be momentarily visible to anyone who is online at
+                                that time.</li>
+                            <li>In second case, the bot will directly forward the message to the channel you created.
+                            </li>
+                        </ul>
+                    </li>
+                    <li><i class="fa-brands fa-discord fa-lg"></i>The bot will also forward the message to the second channel you created where users of specific
+                        role are allowed to see who actually sent the message.</li>
+                </ul>
+               <!--  <div class="note">
+                    <span class="bold">Note:</span> The bot will ignore the messages sent by users with the role
+                    specified in environment variable
+                    <span class="snippet">ROLE_NAME</span> and will forward the messages to a channel which has the name
+                    specified in environment
+                    variable <span class="snippet">MOD_CHANNEL</span> along with the original message's author's name.
+                </div> -->
+            </div>
+            <img src="/assets/botIconInverted2.png" alt="bot icon" class="botIcon">
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footerLogoContainer">
+            <img src="/assets/flcLogoWithoutBg.png" alt="flc logo" class="footerLogo">
+            <h2>Finite Loop Club</h2>
+        </div>
+    </div>
+
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>
