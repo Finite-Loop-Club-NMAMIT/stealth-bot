@@ -1,0 +1,262 @@
+:root.dark {
+    --menu: #2b3b42;
+    --content: #2C2F33;
+    --nav: #23272A;
+    --fontColor: #FAF0E6;
+    --highlight: #567787;
+    --footer: #393b3d;
+    --hover: #43606e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Pangolin', cursive;
+    color: var(--fontColor);
+    line-height: 1.8;
+    scroll-behavior: smooth;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--nav);
+    position: fixed;
+    top: 0px;
+    padding: 0 12.5%;
+    width: 100%;
+    height: 4.7rem;
+    z-index: 50;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav .navLogo {
+    height: 25px;
+    width: 30px;
+}
+
+.nav>div:first-child {
+    margin-right: auto;
+}
+
+h4 {
+    font-size: 20px;
+}
+
+.body {
+    background-image: url(/assets/bg.webp);
+    z-index: -2;
+    background-size: cover;
+    padding-bottom: 4rem;
+    min-height: 100vh;
+    width: 100%;
+    background-color: var(--content);
+    margin-top: 4.7rem;
+}
+
+.body>div.section2 {
+    padding: 2rem;
+    width: 65%;
+    margin-top: 2rem;
+    margin: auto;
+}
+
+.body>div.section1 {
+    padding: 2rem 9rem 2rem 3rem;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    gap: 2rem;
+    width: 90%;
+    min-height: 80vh;
+}
+
+.mainHeading {
+    width: 40%;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mainHeading h1 {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    color: #91b9f4;
+    font-size: 58px;
+    font-family: 'Oswald', sans-serif;
+}
+
+.mainHeading>img {
+    margin: 0 10px;
+    margin-left: auto;
+    width: 60%;
+}
+
+.mainHeading .logo {
+    width: 50px;
+    height: 45px;
+}
+.mainHeading > div{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+}
+a{
+    text-decoration: none;
+}
+.mainHeadingBtn div{
+    cursor: pointer;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 8rem;
+    height: 3rem;
+    background-color: #7118bf;
+    border-radius: 15px;
+}
+.mainHeadingBtn div:hover{
+    width: 8.1rem;
+    height: 3rem;
+}
+.body div.features {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    gap: 0.5rem;
+    margin: 2rem 0;
+    margin-left: auto;
+}
+
+.botIcon {
+    width: 25rem;
+    z-index: -1;
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+}
+i{
+    height: 20px;
+    width: 20px;
+    margin-right: 15px;
+}
+
+ul {
+    list-style-type: none;
+    list-style-position: inside;
+}
+
+li {
+    font-weight: 600;
+    font-size: 19px;
+    margin: 5px 0;
+}
+
+li>ul {
+    margin: 0 1.5rem;
+}
+.bold {
+    font-weight: bold;
+}
+.snippet {
+    padding: 2px;
+    border-radius: 8px;
+    background-color: rgb(153, 147, 147);
+}
+.features h1,
+.howTo h1 {
+    display: flex;
+    align-items: center;
+    height: 45px;
+    padding: 0 5px;
+    font-family: 'Oswald', sans-serif;
+    margin: 0.5rem 0;
+}
+.footer {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--footer);
+}
+.footerLogoContainer {
+    margin: auto;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footerLogo{
+    width: 5rem;
+}
+@media only screen and (max-width:1100px) {
+    
+    .body>div.section1 {
+        padding: 1rem 2rem;
+    }
+    .mainHeading {
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width:850px) {
+    .body>div.section1 {
+        padding: 2rem;
+        flex-direction: column;
+    }
+
+    .body div.features {
+        width: 80%;
+        margin: 2rem auto;
+    }
+
+    .mainHeading {
+        width: 80%;
+    }
+    .mainHeading .logo{
+        width: 50px;
+        height: 45px;
+    }
+    .body>div.section2 {
+        width: 85%;
+    }
+    
+
+}
+
+@media only screen and (max-width:550px) {
+    .body>div.section1{
+        padding: 2rem 0;
+    }
+    .mainHeading h1 {
+        font-size: 40px;
+    }
+
+    .mainHeading {
+        width: 100%;
+    }
+    .mainHeading>img{
+        width: 40%;
+        margin-right: 3rem;
+    }
+    .mainHeadingBtn div{
+        width: 6rem;
+        height: 2rem;
+        border-radius: 10px;
+    }
+    .mainHeadingBtn div:hover{
+        width: 6.1rem;
+        height: 2rem;
+    }
+    .mainHeadingBtn div h3{ 
+        font-size: 15px;
+    }
+
+}

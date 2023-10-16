@@ -109,6 +109,7 @@ async function channelMessage(channel, message, messageStamp) {
 }
 
 client.login(token)
+app.use(express.static("public"));
 app.get("*", (req, res) => {
     res.send('<h1 style="color:blue;">Discord BOT is live</h1>');
 });
