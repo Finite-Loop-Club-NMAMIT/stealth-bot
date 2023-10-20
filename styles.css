@@ -1,7 +1,6 @@
 body {
     font-family: 'GG Sans', sans-serif;
-    background-color: #363940; /* Default background color */
-    color: #ccc; /* Default text color */
+    background-color: #363940;
     width:fit-content;
   }
   
@@ -20,7 +19,7 @@ body {
 }
 
 .stealthlogo {
-    width: 150px; /* Adjust the width for the stealth logo */
+    width: 150px;
     height: auto;
     position: absolute;
     top: 10px; 
@@ -46,7 +45,6 @@ body {
     opacity: 0.5;
 
 }
-  
   
   
   header {
@@ -89,4 +87,11 @@ body {
     font-size:25px;
     color: #ccc;
     opacity: 0.5;
+}
+
+button {
+  background-color: blue;
+  color: white;
+  width: 100px;
+  margin: 0 auto;
 }
