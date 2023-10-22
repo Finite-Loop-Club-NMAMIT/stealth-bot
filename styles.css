@@ -27,25 +27,8 @@ body {
     max-width: 100%;
 }
 
-  
-  .para1 { 
-    margin-left: 10%;
-      font-family: 'GG Sans', sans-serif;
-      font-size: 80px;
-      color: #ccc;
-      opacity: 0.5;
-      margin-top: 250px;
-      
-  }
-  .para2 { 
-    margin-left: 10%;
-    font-family: 'GG Sans', sans-serif;
-    font-size: 40px;
-    color: #ccc;
-    opacity: 0.5;
 
-}
-  
+
   
   header {
     width: 100%;
@@ -89,9 +72,87 @@ body {
     opacity: 0.5;
 }
 
-button {
-  background-color: blue;
-  color: white;
-  width: 100px;
-  margin: 0 auto;
+
+.button {
+  align-items: center;
+  margin-left: 650px;
+  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 140px;
+  padding: 3px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.button:active,
+.button:hover {
+  outline: 0;
+}
+
+.button span {
+  background-color: rgb(5, 6, 45);
+  padding: 16px 24px;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+}
+
+.button:hover span {
+  background: none;
+}
+
+@media (min-width: 768px) {
+  .button {
+    font-size: 24px;
+    min-width: 196px;
+  }
+}
+
+#text1 {
+  margin-left: 10%;
+  font-family: 'GG Sans', sans-serif;
+  font-size: px;
+  color: #ccc;
+  opacity: 0.5;
+  margin-top: 250px;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #000;
+}
+
+#text2 {
+  margin-left: 10%;
+  font-family: 'GG Sans', sans-serif;
+  font-size: 40px;
+  color: #ccc;
+  opacity: 0.5;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 40px solid #000;
+}
+
+#title {
+  margin-left: 10%;
+  font-family: 'GG Sans', sans-serif;
+  color: #ccc;
+  opacity: 0.5;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #000;
+  font-size: 95px;
 }
