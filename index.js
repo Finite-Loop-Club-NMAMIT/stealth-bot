@@ -6,7 +6,7 @@ import { Client, GatewayIntentBits, Events, Partials } from "discord.js";
 import getAvatar from "./avatar.js";
 
 const anonymousChannel = process.env.ANONUMOUS_CHANNEL;
-const roleName = process.env.ROLE_NAME;
+const roleName= "stealth-admin";
 const modChannel = process.env.MOD_CHANNEL;
 const token = process.env.DISCORD_TOKEN;
 if (!anonymousChannel || !token) {
@@ -37,7 +37,7 @@ client.on(Events.MessageCreate, async (message) => {
     }
 
     if (channel.id !== anonymousChannel) return;
-    if (roleName && message.member.roles.cache.some((role) => role.name === roleName)) return; // admin can't send anonymous messages
+    if (message.member.roles.cache.some((role) => role.name === roleName)) return; // admin can't send anonymous messages
     await channelMessage(channel, message, messageStamp);
 });
 
